@@ -1,0 +1,9 @@
+<h1><%= @product.name %></h1>
+<p>
+  <%= number_to_currency @product.price %>
+</p>
+<p>
+  <%= image_tag @product.image, height: "70" %>
+</p>
+
+<%= link_to  'Edit', edit_product_path(@product) %> | <%= link_to 'Products', products_path %>

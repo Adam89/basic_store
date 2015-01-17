@@ -1,0 +1,30 @@
+<%= form_for @product, multipart: true do |f| %>
+  <% if @product.errors.any? %>
+    <h2><%= pluralize(@product.errors.count, 'Error') %> Stopped product from being saved.</h2>
+    <ul>
+      <% @product.errors.full_messages.each do |msg| %>
+        <li> <%= msg %> </li>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div class='field' >
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+  <div class='field' >
+    <%= f.label :price %>
+    <%= f.text_field :price %>
+  </div>
+  <div class='field' >
+    <%= f.label :image %>
+    <%= f.file_field :image %>
+  </div>
+  <div class='actions' >
+    <% if current_page?(action: 'new') %>
+      <%= f.submit 'Save' %>
+    <% else %>
+      <%= f.submit 'Update' %>
+    <% end %>
+  </div>
+<% end %>

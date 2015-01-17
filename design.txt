@@ -1,0 +1,12 @@
+Main domain models
+
+* Product
+* Order
+  - OrderItem/LineItem
+* User (admin, customer)
+* Cart (Not persisted, will be session based)
+  - CartItem
+
+*****
+* Category
+* Review
