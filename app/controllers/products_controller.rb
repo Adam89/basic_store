@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_filter :initialize_cart
+
   def index
     @products = Product.all
   end

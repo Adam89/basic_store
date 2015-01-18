@@ -29,7 +29,7 @@ class CartTest < MiniTest::Test
     cart = Cart.new
     cart.add_item(1)
 
-    assert_equal session_hash, cart.serialize
+    assert_equal session_hash["cart"], cart.serialize
   end
 
   def test_build_from_hash

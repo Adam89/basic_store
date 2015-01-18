@@ -1,0 +1,8 @@
+<p class="navbar-text navbar-right">
+  <% if @cart && @cart.empty? %>
+    Your cart is empty
+  <% else %>
+    <%= link_to "#{pluralize(@cart.count, 'Item')}  In Cart", cart_path  %>
+    </p>
+  <% end %>
+</p>

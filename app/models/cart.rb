@@ -2,13 +2,16 @@ class Cart
   attr_reader :items
 
   def self.build_from_hash(session_hash)
-    items = session_hash["cart"]["items"].map do |item_data|
-      CartItem.new(
-        item_data["product_id"],
-        item_data["quantity"],
-      )
+    if session_hash["cart"]
+     items = session_hash["cart"]["items"].map do |item_data|
+        CartItem.new(
+          item_data["product_id"],
+          item_data["quantity"],
+        )
+      end
+    else
+      items = []
     end
-
     new(items)
   end
 
@@ -30,10 +33,16 @@ class Cart
 
   def serialize
     {
-      "cart" => {
-        "items" => serialize_items
-      }
+      "items" => serialize_items
     }
+  end
+
+  def count
+    items.count
+  end
+
+  def total_price
+    items.inject(0) {|s,item| s += item.total_price }
   end
 
   private

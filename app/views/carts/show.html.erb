@@ -1,0 +1,22 @@
+<table class="table table-hover">
+  <thead>
+    <tr>
+      <td>Name</td>
+      <td>Quantity</td>
+      <td>Price Per Item</td>
+      <td>Total Price</td>
+    </tr>
+  </thead>
+  <% @cart.items.each do |item| %>
+    <tr>
+      <td><%= link_to(item.product.name, item.product) %></td>
+      <td><%= item.quantity %></td>
+      <td><%= number_to_currency(item.price) %></td>
+      <td><%= number_to_currency(item.total_price) %></td>
+  <% end %>
+  </tr>
+</table>
+
+<p>
+  Grand Total: <%= number_to_currency(@cart.total_price) %>
+</p>
