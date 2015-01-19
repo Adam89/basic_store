@@ -1,0 +1,9 @@
+Hello <%= @order.user.name %>
+
+Thank you for placing an order. Here is a summary for #<%= @order.id %>:
+
+<%- @order.order_items.each do |item| %>
+  * <%= item.quantity%> <%= item.name %> (<%= number_to_currency(item.total_price) %>)
+<% end %>
+
+Total Price: <%= number_to_currency(@order.total_price) %>

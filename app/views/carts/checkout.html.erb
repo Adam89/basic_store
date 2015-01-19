@@ -1,0 +1,21 @@
+<h1>
+Checkout
+</h1>
+
+<h2>You have the following products:</h2>
+
+<ul>
+  <% @cart.items.each do |item| %>
+    <li>
+      <em><%= item.quantity %></em> <%= item.product.name %> <%= item.total_price %>
+  </li>
+<% end %>
+</ul>
+
+<p>
+  <strong>
+    Grand Total: <%= number_to_currency(@cart.total_price) %>
+  </strong>
+</p>
+
+<%= render 'order_form' %>

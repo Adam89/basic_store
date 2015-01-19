@@ -1,0 +1,43 @@
+<h1>Personal Details</h1>
+<%= form_for @order_form, url: orders_path do |f| %>
+  <%= render 'orders/errors' %>
+  <%= f.fields_for :user, f.object.user do |u| %>
+    <div class="form-group">
+      <p>
+        <%= u.text_field :name, placeholder: 'Name', class: 'form-control input-lg' %>
+      </p>
+      <p>
+        <%= u.text_field :email, placeholder: 'Email', class: 'form-control' %>
+        <span class="help-block">
+          This will help you track your order more efficiently
+        </span>
+      </p>
+
+      <div class="form-group">
+
+        <div class="row">
+          <p class="col-md-6">
+            <%= u.text_field :address, placeholder: 'Address', class: 'form-control' %>
+          </p>
+          <p class="col-md-3">
+            <%= u.text_field :postal_code, placeholder: 'Postal code / Zipcode', class: 'form-control' %>
+          </p>
+          <p class="col-md-3">
+            <%= u.text_field :city, placeholder: 'City', class: 'form-control' %>
+          </p>
+        </div>
+
+        <p>
+          <%= u.country_select :country, { priority_countries: ["GB", "US", "DE", "ES", "PR"] }, {class: 'form-control'} %>
+        </p>
+        <p>
+          <%= u.text_field :phone, class: 'form-control', placeholder: "Phone" %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+
+  <p>
+    <%= f.submit "Place Order", class: 'btn btn-primary' %>
+  </p>
+<% end %>
