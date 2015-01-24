@@ -12,6 +12,7 @@ class OrdersController < ApplicationController
       if user_charged?
         redirect_to root_path,
           notice: "Thank you for placing order, you'll receive a confirmation email"
+        clear_cart
       else
         flash[:warning] = <<EOF
       We have stored your order with the id of #{@order_form.order.id}.
@@ -37,6 +38,7 @@ EOF
     transaction.execute
     if transaction.ok?
       redirect_to root_path, notice: 'Thank you for placing the order.'
+      clear_cart
     else
       render 'orders/new_payment'
     end
@@ -56,7 +58,7 @@ EOF
   end
 
   def user_charged?
-    transaction = OrderTransaction.new(@order, params[:payment_method_nonce])
+    transaction = OrderTransaction.new(@order_form.order, params[:payment_method_nonce])
     transaction.execute
     transaction.ok?
   end
