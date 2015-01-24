@@ -16,5 +16,6 @@ class CartsController < ApplicationController
     @order_form = OrderForm.new(
       user: User.new,
     )
+    @client_token = Braintree::ClientToken.generate
   end
 end

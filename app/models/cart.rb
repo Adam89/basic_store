@@ -3,7 +3,7 @@ class Cart
 
   def self.build_from_hash(session_hash)
     if session_hash["cart"]
-     items = session_hash["cart"]["items"].map do |item_data|
+      items = session_hash["cart"]["items"].map do |item_data|
         CartItem.new(
           item_data["product_id"],
           item_data["quantity"],
@@ -12,6 +12,7 @@ class Cart
     else
       items = []
     end
+
     new(items)
   end
 

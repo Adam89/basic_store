@@ -37,7 +37,11 @@
     </div>
   <% end %>
 
+  <div id="dropin">
+  </div>
   <p>
     <%= f.submit "Place Order", class: 'btn btn-primary' %>
   </p>
 <% end %>
+
+<%= render 'orders/braintree' %>

@@ -1,0 +1,13 @@
+<ul>
+  <% order.order_items.each do |item| %>
+    <li>
+      <em><%= item.quantity %></em> <%= item.product.name %> <%= item.total_price %>
+  </li>
+<% end %>
+</ul>
+
+<p>
+  <strong>
+    Grand Total: <%= number_to_currency(order.total_price) %>
+  </strong>
+</p>
