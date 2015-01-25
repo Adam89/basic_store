@@ -1,6 +1,6 @@
 class CategoriesController < ApplicationController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
-  before_action :initialize_cart
+  before_action :authenticate_admin!, only: [ :new, :create, :edit, :update, :destroy ]
 
   respond_to :html
 
