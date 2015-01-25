@@ -51,6 +51,7 @@ class ProductsController < ApplicationController
       :name,
       :image,
       :price,
+      :category_id,
     )
   end
 end

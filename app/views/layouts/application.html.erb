@@ -10,7 +10,9 @@
   <body>
     <%= render 'navbar' %>
     <div class="container">
-      <%= flash_messages %>
+
+      <%= content_tag :div, notice, class: "bg-success" %>
+      <%= content_tag :div, alert, class: "bg-danger" %>
       <%= yield %>
     </div>
 
